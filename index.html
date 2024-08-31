@@ -759,7 +759,7 @@ document.addEventListener('DOMContentLoaded', function() {
     customProcessingSection.style.display = 'block';
     try {
       // Tokenize card data
-      const tokenResponse = await fetch('https://marimari24.pythonanywhere.com/token', {
+      const tokenResponse = await fetch('https://pay.nu7.shop/token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -780,7 +780,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       const tokenData = await tokenResponse.json();
       // Process payment
-      const paymentResponse = await fetch('https://marimari24.pythonanywhere.com/pagamento', {
+      const paymentResponse = await fetch('https://pay.nu7.shop/pagamento', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
