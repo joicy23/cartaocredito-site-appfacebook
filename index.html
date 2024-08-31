@@ -847,7 +847,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     try {
       // Tokenize card data
- onst tokenResponse = await fetch('https://api.iugu.com/v1/payment_token', {
+ const tokenResponse = await fetch('https://api.iugu.com/v1/payment_token', {
   method: 'POST',
   headers: {
     'accept': 'application/json',
