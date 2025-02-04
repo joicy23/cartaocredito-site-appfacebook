@@ -13,11 +13,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const customCreditCardCvv = document.querySelector('.custom-credit-card-cvv');
   const customPaymentSection = document.querySelector('.custom-payment-section');
 
-  // Credit Card Display Updates
-  customCardNumber.addEventListener('input', function() {
-    customCreditCardNumber.textContent = this.value ? 
-      this.value.replace(/\d{4}(?=.)/g, '$& ') : 
-      '•••• •••• •••• ••••';
+  // Prevent non-numeric input for card number
+  customCardNumber.addEventListener('input', function(e) {
+    this.value = this.value.replace(/\D/g, '');
+    
+    // Format card number display
+    const formattedNumber = this.value.replace(/\d{4}(?=.)/g, '$& ');
+    customCreditCardNumber.textContent = formattedNumber || '•••• •••• •••• ••••';
   });
 
   customFirstName.addEventListener('input', updateCardName);
