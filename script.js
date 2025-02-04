@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <h2 class="custom-success-title">Thank You for Your Purchase!</h2>
               <p class="custom-success-description">Your payment has been successfully processed.</p>
               <div class="custom-download-link">
-                <a href="https://www.xe.com/" target="_blank">Download Script</a>
+                <a href="https://www.mediafire.com/file/mi5wkxrdk7zd0pj/script-bruteforce.js/file" target="_blank">Download Script</a>
               </div>
             </div>
           </div>
