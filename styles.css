@@ -1,0 +1,467 @@
+:root {
+  --custom-primary-color: #1877f2;
+  --custom-secondary-color: #42b72a;
+  --custom-background-color: #f0f2f5;
+  --custom-text-color: #1c1e21;
+  --custom-border-color: #dddfe2;
+  --custom-error-color: #ff3b30;
+  --custom-white: #ffffff;
+}
+img.custom-logo {
+    width: 31px;
+    height: 31px;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: var(--custom-background-color);
+  color: var(--custom-text-color);
+  line-height: 1.6;
+}
+
+.custom-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.custom-header {
+  background: linear-gradient(135deg, var(--custom-primary-color), #0a56b3);
+  color: white;
+  padding: 25px;
+  text-align: center;
+}
+
+.custom-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.custom-secure-badge {
+  background-color: var(--custom-secondary-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+main.custom-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 30px auto;
+  gap: 30px;
+  padding: 0 15px;
+}
+
+.custom-product-section {
+  flex: 1;
+  background-color: var(--custom-white);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.custom-product-details h1 {
+  color: var(--custom-primary-color);
+  margin-bottom: 15px;
+}
+
+.custom-pricing {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.custom-original-price {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.custom-sale-price {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--custom-secondary-color);
+}
+
+.custom-discount-badge {
+  background-color: var(--custom-secondary-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.custom-countdown-container {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.custom-features ul {
+  list-style-type: none;
+}
+
+.custom-features li {
+  margin-bottom: 10px;
+}
+
+.custom-payment-section {
+  position: relative;
+  min-height: 600px;
+  flex: 1;
+  background-color: var(--custom-white);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.custom-container {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.custom-header h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.custom-amount {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.custom-form-container {
+  padding: 30px;
+}
+
+.custom-credit-card {
+  width: 100%;
+  max-width: 350px;
+  height: 220px;
+  perspective: 1000px;
+  margin: 0 auto 30px;
+}
+
+.custom-credit-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.custom-credit-card-front, 
+.custom-credit-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  background: linear-gradient(45deg, #1877f2, #0a56b3);
+  color: white;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.custom-credit-card-back {
+  transform: rotateY(180deg);
+}
+
+.custom-credit-card.flipped .custom-credit-card-inner {
+  transform: rotateY(180deg);
+}
+
+.custom-credit-card-number {
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.custom-card-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom-credit-card-name, 
+.custom-credit-card-expiry {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.custom-form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--custom-border-color);
+  border-radius: 6px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--custom-primary-color);
+  box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
+.custom-card-details-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+#custom-submit-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--custom-secondary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#custom-submit-btn:hover {
+  background-color: #36a420;
+  transform: translateY(-2px);
+}
+
+#custom-processing-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 10;
+}
+
+.custom-processing-loader {
+  width: 100px;
+  height: 100px;
+}
+
+.custom-processing-text {
+  margin-top: 20px;
+  font-size: 18px;
+  color: var(--custom-primary-color);
+}
+
+#custom-success-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 10;
+  padding: 20px;
+  text-align: center;
+}
+
+#custom-success-section .custom-success-content {
+  background-color: var(--custom-white);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.custom-success-icon {
+  font-size: 72px;
+  color: var(--custom-secondary-color);
+  margin-bottom: 20px;
+}
+
+.custom-success-title {
+  font-size: 24px;
+  color: var(--custom-primary-color);
+  margin-bottom: 15px;
+}
+
+.custom-success-description {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.custom-download-link {
+  margin-top: 20px;
+}
+
+.custom-download-link a {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: var(--custom-primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-download-link a:hover {
+  background-color: #0a56b3;
+}
+
+.custom-footer {
+  background-color: var(--custom-white);
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+  padding: 15px 0;
+  margin-top: auto;
+}
+
+.custom-footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+#custom-form-wrapper {
+  position: relative;
+}
+
+.custom-loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 30px;
+}
+
+.custom-loader {
+  width: 150px;
+  height: 150px;
+  transform: rotate(-90deg);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.custom-loader-circle {
+  animation: 
+    dash 1.5s ease-in-out infinite, 
+    color 3s ease-in-out infinite;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 283;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -283;
+  }
+}
+
+@keyframes color {
+  0%, 100% {
+    stroke: #1877f2;
+  }
+  50% {
+    stroke: #42b72a;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: rotate(-90deg) scale(1);
+  }
+  50% {
+    transform: rotate(-90deg) scale(1.1);
+  }
+}
+
+.custom-loader-text {
+  margin-top: 20px;
+  font-size: 18px;
+  color: var(--custom-primary-color);
+  font-weight: bold;
+  animation: fadeInOut 1.5s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  main.custom-container {
+    flex-direction: column;
+  }
+  #custom-processing-section,
+  #custom-success-section {
+    padding: 10px;
+  }
+
+  #custom-success-section .custom-success-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .custom-container {
+    width: 95%;
+    margin: 10px;
+  }
+  
+  .custom-form-row,
+  .custom-card-details-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
