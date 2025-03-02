@@ -559,6 +559,16 @@ input:focus {
   border-radius: 6px;
 }
 
+.custom-support-note a {
+  color: var(--custom-primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.custom-support-note a:hover {
+  text-decoration: underline;
+}
+
 .custom-telegram-support {
   position: fixed;
   bottom: 20px;
