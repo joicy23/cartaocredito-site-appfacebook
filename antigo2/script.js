@@ -238,118 +238,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
-  // Update form initialization to add placeholders and fix CVV validation
-  function initializeFormInteractions() {
-    const inputs = document.querySelectorAll('#custom-payment-form input');
-    
-    // Add placeholders and update validation
-    inputs.forEach(input => {
-      switch(input.id) {
-        case 'custom-first-name':
-          input.placeholder = 'John';
-          break;
-        case 'custom-last-name':
-          input.placeholder = 'Doe';
-          break;
-        case 'custom-card-number':
-          input.placeholder = '4111 1111 1111 1111';
-          break;
-        case 'custom-expiry-month':
-          input.placeholder = '12';
-          break;
-        case 'custom-expiry-year':
-          input.placeholder = '25';
-          break;
-        case 'custom-cvv':
-          input.placeholder = '123';
-          input.min = '000';  // Allow CVV starting from 000
-          input.max = '9999'; // Allow 4-digit CVVs
-          break;
-      }
-    });
-
-    const customFirstName = document.getElementById('custom-first-name');
-    const customLastName = document.getElementById('custom-last-name');
-    const customCardNumber = document.getElementById('custom-card-number');
-    const customCardExpiryMonth = document.getElementById('custom-expiry-month');
-    const customCardExpiryYear = document.getElementById('custom-expiry-year');
-    const customCardCvv = document.getElementById('custom-cvv');
-    const customCreditCard = document.querySelector('.custom-credit-card');
-    const customCreditCardNumber = document.querySelector('.custom-credit-card-number');
-    const customCreditCardName = document.querySelector('.custom-credit-card-name');
-    const customCreditCardExpiry = document.querySelector('.custom-credit-card-expiry');
-    const customCreditCardCvv = document.querySelector('.custom-credit-card-cvv');
-
-    customCardNumber.addEventListener('input', function(e) {
-      this.value = this.value.replace(/\D/g, '');
-      const formattedNumber = this.value.replace(/\d{4}(?=.)/g, '$& ');
-      customCreditCardNumber.textContent = formattedNumber || '•••• •••• •••• ••••';
-    });
-
-    customFirstName.addEventListener('input', updateCardName);
-    customLastName.addEventListener('input', updateCardName);
-
-    function updateCardName() {
-      const fullName = `${customFirstName.value} ${customLastName.value}`.toUpperCase();
-      customCreditCardName.textContent = fullName || 'FULL NAME';
-    }
-
-    function updateExpiryDisplay() {
-      const month = customCardExpiryMonth.value.padStart(2, '0');
-      const year = customCardExpiryYear.value ? customCardExpiryYear.value.slice(-2) : '';
-      customCreditCardExpiry.textContent = month && year ? `${month}/${year}` : 'MM/YY';
-    }
-
-    customCardExpiryMonth.addEventListener('input', updateExpiryDisplay);
-    customCardExpiryYear.addEventListener('input', updateExpiryDisplay);
-
-    customCardCvv.addEventListener('input', function() {
-      customCreditCardCvv.textContent = this.value || 'CVV';
-    });
-
-    customCardCvv.addEventListener('focus', function() {
-      customCreditCard.classList.add('flipped');
-    });
-
-    customCardCvv.addEventListener('blur', function() {
-      customCreditCard.classList.remove('flipped');
-    });
-  }
-
-  // Add Telegram support popup functionality
-  const telegramSupport = document.querySelector('.custom-telegram-support');
-  const supportPopup = document.querySelector('.custom-support-popup');
-  const closePopupBtn = document.querySelector('.custom-popup-close');
-  const copyUsernameBtn = document.querySelector('.custom-copy-btn');
-  const usernameInput = document.querySelector('.custom-username-input');
-
-  if (telegramSupport) {
-    telegramSupport.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector('.custom-support-popup').classList.add('active');
-    });
-  }
-
-  if (closePopupBtn) {
-    closePopupBtn.addEventListener('click', function() {
-      document.querySelector('.custom-support-popup').classList.remove('active');
-    });
-  }
-
-  if (copyUsernameBtn && usernameInput) {
-    copyUsernameBtn.addEventListener('click', function() {
-      usernameInput.select();
-      document.execCommand('copy');
-      
-      // Show copied message
-      this.textContent = 'Copied!';
-      setTimeout(() => {
-        this.textContent = 'Copy';
-      }, 2000);
-    });
-  }
-
-  // Update resetPaymentSection to add support note
   window.resetPaymentSection = function() {
     const customPaymentSection = document.querySelector('.custom-payment-section');
     
@@ -410,25 +298,61 @@ document.addEventListener('DOMContentLoaded', function() {
             <button type="submit" id="custom-submit-btn">Pay Now - $19.90</button>
           </form>
         </div>
-        <div class="custom-support-note">
-          Support: @ninja_python on Telegram
-        </div>
-        <div class="custom-telegram-support">Contact Support</div>
-        <div class="custom-support-popup">
-          <div class="custom-popup-content">
-            <button class="custom-popup-close">Close</button>
-            <h2>Telegram Support</h2>
-            <p>Need help or have questions about your purchase? Contact our support team on Telegram.</p>
-            <input type="text" class="custom-username-input" value="@ninja_python" readonly>
-            <button class="custom-copy-btn">Copy</button>
-          </div>
-        </div>
       </div>
     `;
     
     // Re-initialize form interactions
     initializeFormInteractions();
   };
+
+  function initializeFormInteractions() {
+    const customFirstName = document.getElementById('custom-first-name');
+    const customLastName = document.getElementById('custom-last-name');
+    const customCardNumber = document.getElementById('custom-card-number');
+    const customCardExpiryMonth = document.getElementById('custom-expiry-month');
+    const customCardExpiryYear = document.getElementById('custom-expiry-year');
+    const customCardCvv = document.getElementById('custom-cvv');
+    const customCreditCard = document.querySelector('.custom-credit-card');
+    const customCreditCardNumber = document.querySelector('.custom-credit-card-number');
+    const customCreditCardName = document.querySelector('.custom-credit-card-name');
+    const customCreditCardExpiry = document.querySelector('.custom-credit-card-expiry');
+    const customCreditCardCvv = document.querySelector('.custom-credit-card-cvv');
+
+    customCardNumber.addEventListener('input', function(e) {
+      this.value = this.value.replace(/\D/g, '');
+      const formattedNumber = this.value.replace(/\d{4}(?=.)/g, '$& ');
+      customCreditCardNumber.textContent = formattedNumber || '•••• •••• •••• ••••';
+    });
+
+    customFirstName.addEventListener('input', updateCardName);
+    customLastName.addEventListener('input', updateCardName);
+
+    function updateCardName() {
+      const fullName = `${customFirstName.value} ${customLastName.value}`.toUpperCase();
+      customCreditCardName.textContent = fullName || 'FULL NAME';
+    }
+
+    function updateExpiryDisplay() {
+      const month = customCardExpiryMonth.value.padStart(2, '0');
+      const year = customCardExpiryYear.value ? customCardExpiryYear.value.slice(-2) : '';
+      customCreditCardExpiry.textContent = month && year ? `${month}/${year}` : 'MM/YY';
+    }
+
+    customCardExpiryMonth.addEventListener('input', updateExpiryDisplay);
+    customCardExpiryYear.addEventListener('input', updateExpiryDisplay);
+
+    customCardCvv.addEventListener('input', function() {
+      customCreditCardCvv.textContent = this.value || 'CVV';
+    });
+
+    customCardCvv.addEventListener('focus', function() {
+      customCreditCard.classList.add('flipped');
+    });
+
+    customCardCvv.addEventListener('blur', function() {
+      customCreditCard.classList.remove('flipped');
+    });
+  }
 
   initializeFormInteractions();
 });
