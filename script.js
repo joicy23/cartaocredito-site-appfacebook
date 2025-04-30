@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
     customPaymentSection.innerHTML = processingSection;
 
     try {
-      const response = await fetch('https://script.jrdesigndev.io/paypay', {
+      const response = await fetch('https://api.get-on.space/wp-json/custom/v1/pay', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
